@@ -40,7 +40,7 @@ public class UserContactServiceImpl implements UserContactService {
         while (true){
             System.out.println("==========startPage================:"+start);
             prames.put("startPage",start);
-            List<UserContacts> list = userContactMapper.findList(prames);
+            List<UserContacts> list = userContactMapper.findListQuick(prames);
             indexQueries = new ArrayList<IndexQuery>();
             long startTime =System.currentTimeMillis();
             System.out.println("==========start================");
@@ -58,7 +58,7 @@ public class UserContactServiceImpl implements UserContactService {
             }else{
                 start+=50000;
             }
-            if(start==100000000){
+            if(start>102000000){
                 break;
             }
         }

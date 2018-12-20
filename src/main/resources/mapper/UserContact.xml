@@ -28,4 +28,19 @@
 				create_time
 		 from user_contacts limit #{startPage},50000
 	</select>
+
+	<select id="findListQuick" parameterType="HashMap" resultMap="userContacts">
+		 select
+	 		b.id,
+			b.user_id,
+			b.user_name,
+			b.contact_name,
+			b.contact_phone,
+			b.create_time from (
+			   select id from user_contacts
+			   order by id limit #{startPage},50000
+			) a
+			left join user_contacts b on a.id=b.id
+	</select>
+
 </mapper>

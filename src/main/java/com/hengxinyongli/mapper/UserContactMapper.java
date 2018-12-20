@@ -19,4 +19,5 @@ public interface UserContactMapper {
 
     public List<UserContacts> findList(Map<String,Object> prames);
 
+    public List<UserContacts> findListQuick(Map<String,Object> prames);
 }
