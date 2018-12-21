@@ -46,7 +46,7 @@ public class UserContactServiceImpl implements UserContactService {
             System.out.println("==========start================");
             IndexQuery indexQuery1=null;
             for (UserContacts userContacts : list) {
-                // userContactRepository.save(userContacts);
+                 //userContactRepository.save(userContacts);
                 indexQuery1 = new IndexQueryBuilder().withId(String.valueOf(userContacts.getId())).withObject(userContacts).build();
                 indexQueries.add(indexQuery1);
             }
