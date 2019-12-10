@@ -1,8 +1,6 @@
 package com.hengxinyongli.controller;
 
-import com.hengxinyongli.esmapper.ArticleSearchRepository;
 import com.hengxinyongli.model.Article;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,8 +18,6 @@ import java.util.Date;
 @RestController
 public class ArticleController {
 
-    @Autowired
-    private ArticleSearchRepository articleSearchRepository;
 
     @RequestMapping("/add")
     public void testSaveArticleIndex() {
@@ -35,7 +31,7 @@ public class ArticleController {
         article.setPostTime(new Date());
         article.setClickCount(1L);
 
-        articleSearchRepository.save(article);
+        //articleSearchRepository.save(article);
     }
 
     @RequestMapping("/query")
