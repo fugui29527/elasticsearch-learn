@@ -2,8 +2,6 @@ package com.hengxinyongli.controller;
 
 import com.hengxinyongli.model.Books;
 import org.elasticsearch.index.query.QueryStringQueryBuilder;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,8 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class BooksController {
-    @Autowired
-    private ElasticsearchTemplate elasticsearchTemplate;
+
     @RequestMapping("/addbook")
     public void testSaveBookIndex() {
         Books book =new Books();

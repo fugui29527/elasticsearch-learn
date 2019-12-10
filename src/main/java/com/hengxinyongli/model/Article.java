@@ -1,8 +1,5 @@
 package com.hengxinyongli.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.elasticsearch.annotations.Document;
-
 import java.io.Serializable;
 import java.util.Date;
 
@@ -15,9 +12,9 @@ import java.util.Date;
  * @date 2018/9/27 10:51
  * @since <版本号>
  */
-@Document(indexName = "projectname",type = "article",indexStoreType="fs",shards=1,replicas=1,refreshInterval="-1")
+//@Document(indexName = "projectname",type = "article",indexStoreType="fs",shards=1,replicas=1,refreshInterval="-1")
 public class Article implements Serializable {
-    @Id
+ //   @Id
     private Long id;
     /**标题*/
     private String title;

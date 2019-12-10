@@ -1,8 +1,5 @@
 package com.hengxinyongli.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.elasticsearch.annotations.Document;
-
 /**
  * <一句话说明功能>
  * <功能详细描述>
@@ -12,9 +9,9 @@ import org.springframework.data.elasticsearch.annotations.Document;
  * @date 2018/9/29 09:00
  * @since <版本号>
  */
-@Document(indexName = "t_books",type = "book" ,shards = 1,replicas = 0 ,refreshInterval="-1")
+//@Document(indexName = "t_books",type = "book" ,shards = 1,replicas = 0 ,refreshInterval="-1")
 public class Books {
-    @Id
+   // @Id
     private long id;
     /**
      * 书名

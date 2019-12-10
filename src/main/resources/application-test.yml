@@ -1,25 +1,18 @@
-spring:
-    # SPRING PROFILES
-    data:
-      elasticsearch:
-        cluster-name: you_es_cluster
-        cluster-nodes: 192.168.33.102:9300 #配置es节点信息，逗号分隔，如果没有指定，则启动ClientNode
-        properties:
-          path:
-            logs: ./elasticsearch/log #elasticsearch日志存储目录
-            data: ./elasticsearch/data #elasticsearch数据存储目录
+elasticsearch:
+  ip: 127.0.0.1:9200
+# SPRING PROFILES
 mybatis:
   mapper-locations: classpath:mapper/*.xml
 
 druid:
-  url: jdbc:mysql://rm-wz9xa7a8307pmzhr4.mysql.rds.aliyuncs.com:3306/szqb_pro?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
-  username: szqb_read
-  password: szqb@2018
+  url: jdbc:mysql://154.211.159.68:4006/ims?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+  username: qpread58
+  password: "hsk6$#5#$%"
 
 
 # LOGGING
 server:
-  port: 28033
+  port: 8033
   servlet:
     context-path: /elsearch
 # 日志

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2010-2013 the original author or authors. Licensed under the 
+	Apache License, Version 2.0 (the "License"); you may not use this file except 
+	in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
+	Unless required by applicable law or agreed to in writing, software distributed 
+	under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES 
+	OR CONDITIONS OF ANY KIND, either express or implied. See the License for 
+	the specific language governing permissions and limitations under the License. -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hengxinyongli.mapper.GameRecordMapper">
+	<!-- <cache /> -->
+	<resultMap id="gameRecord" type="com.hengxinyongli.model.dao.GameRecord">
+		<result column="id" property="id" jdbcType="INTEGER" />
+		<result column="bill_no" property="billNo" jdbcType="VARCHAR" />
+		<result column="player_id" property="playerId" jdbcType="VARCHAR" />
+		<result column="platform" property="platform" jdbcType="VARCHAR" />
+		<result column="game_type" property="gameType" jdbcType="INTEGER" />
+		<result column="game_name" property="gameName" jdbcType="VARCHAR" />
+		<result column="bet_number" property="betNumber" jdbcType="DOUBLE" />
+		<result column="valid_bet_number" property="validBetNumber" jdbcType="DOUBLE" />
+		<result column="net_number" property="netNumber" jdbcType="DOUBLE" />
+		<result column="dml" property="dml" jdbcType="DOUBLE" />
+		<result column="flag" property="flag" jdbcType="INTEGER" />
+		<result column="expand_str" property="expandStr" jdbcType="VARCHAR" />
+		<result column="bet_time" property="betTime" jdbcType="TIMESTAMP" />
+		<result column="beijing_time" property="beijingTime" jdbcType="TIMESTAMP" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+		<result column="tax" property="tax" jdbcType="DOUBLE" />
+	</resultMap>
+
+<!--	<select id="findList" parameterType="integer" resultMap="gameRecord">-->
+<!--		select   id,-->
+<!--			  bill_no,-->
+<!--			  player_id,-->
+<!--			  platform,-->
+<!--			  game_type,-->
+<!--			  game_name,-->
+<!--			  bet_number,-->
+<!--			  valid_bet_number,-->
+<!--			  net_number,-->
+<!--			  dml,-->
+<!--			  flag,-->
+<!--			  expand_str,-->
+<!--			  bet_time,-->
+<!--			  beijing_time,-->
+<!--			  create_time,-->
+<!--			  update_time,-->
+<!--			  tax-->
+<!--		 from ims_game_record12 limit #{startPage},10000-->
+<!--	</select>-->
+
+	<select id="findList" parameterType="integer" resultMap="gameRecord" >
+		 select   b.id,
+			  b.bill_no,
+			  b.player_id,
+			  b.platform,
+			  b.game_type,
+			  b.game_name,
+			  (b.bet_number * 100) as bet_number ,
+			  (b.valid_bet_number * 100) as valid_bet_number,
+			  (b.net_number * 100 ) as net_number,
+			  (b.dml * 100) as dml,
+			  b.flag,
+			  b.expand_str,
+			  b.bet_time,
+			  b.beijing_time,
+			  b.create_time,
+			  b.update_time,
+			  b.tax from (
+				   select id from ims_game_record11 limit #{startPage},20000
+				) a INNER JOIN ims_game_record11 b on a.id =b.id
+
+	</select>
+
+</mapper>
