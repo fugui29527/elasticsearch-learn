@@ -83,12 +83,8 @@ public class GameRecordServiceImpl implements GameRecordService {
                 BulkRequest bulkRequest = getBulkRequest(list);
                 BulkResponse bulk = highLevelClient.bulk(bulkRequest, RequestOptions.DEFAULT);
                 log.info("====保存到es结果 status=:{} ===resp=:{}", bulk.status().getStatus(), bulk.toString());
-                if (start == 0) {
-                    start += 20001;
-                } else {
-                    start += 20000;
-                }
-                if(start > 8900000){
+                start += 20000;
+                if(list.size()<20000){
                     break;
                 }
             }
